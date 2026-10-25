@@ -1,0 +1,44 @@
+== 1. hand-made cases (my_cases.jsonl), sent twice in one process
+PASS case 1: dsu (valid in both passes)
+PASS case 2: dsu (valid in both passes)
+PASS case 3: kruskal (valid in both passes)
+PASS case 4: prim (valid in both passes)
+PASS case 5: kruskal (valid in both passes)
+PASS case 6: prim (valid in both passes)
+PASS case 7: kruskal (valid in both passes)
+PASS case 8: prim (valid in both passes)
+PASS case 9: scc (valid in both passes)
+PASS case 10: scc (valid in both passes)
+PASS case 11: topo (valid in both passes)
+PASS case 12: topo (valid in both passes)
+PASS case 13: topo (valid in both passes)
+PASS case 14: dag (valid in both passes)
+PASS case 15: dag (valid in both passes)
+PASS case 16: dag (valid in both passes)
+PASS case 17: dag (valid in both passes)
+PASS case 18: dag (valid in both passes)
+PASS case 19: dag (valid in both passes)
+PASS second pass returned exactly the same answers (state is reset between requests)
+== 2. validator self-check (alternative valid answer / invalid witness)
+PASS MST: alternative valid answer accepted, invalid witness rejected
+PASS SCC: alternative valid answer accepted, invalid witness rejected
+PASS topological order: alternative valid answer accepted, invalid witness rejected
+PASS DAG parent_edge: alternative valid answer accepted, invalid witness rejected
+== 3. published limits: n = 100000, m or q = 250000 (generated, seed 1)
+PASS dsu: chain of 99999 unions + repeats; m/q=250000; 1.7s
+PASS kruskal: chain of -10^9 edges + 150001 random heavier edges (cost -99999*10^9); m/q=250000; 1.7s
+PASS prim: same graph; m/q=250000; 1.7s
+PASS scc: chain + forward edges (100000 singleton SCCs); m/q=250000; 2.5s
+PASS scc: one cycle through all vertices + random edges (one SCC); m/q=250000; 1.3s
+PASS topo: reversed chain + backward edges (acyclic); m/q=250000; 1.2s
+PASS topo: chain + back edge (one huge cycle); m/q=250000; 1.0s
+PASS dag: chain of -10^9 edges + forward edges; m/q=250000; 1.3s
+PASS dag: huge cycle unreachable from source 0; m/q=250000; 0.9s
+== 4. route helper (RouteHelperCheck.java calls the helper directly)
+PASS reachable target 3: route=[0, 1, 2, 3] edgeIds=[0, 2, 3] cost=0 distance=0
+PASS target is the source: route=[0] edgeIds=[] cost=0 distance=0
+PASS unreachable target 4: route=[] edgeIds=[] cost=0 distance=null
+PASS tied routes to 2 (edge 2 directly, or 0->1->2): route=[0, 2] edgeIds=[2] cost=5 distance=5
+PASS parallel edges to 1: route=[0, 1] edgeIds=[0] cost=2 distance=2
+PASS route helper checks
+ALL TESTS PASSED
